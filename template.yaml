@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: FastAPI Score API on AWS Lambda
+
+Globals:
+  Function:
+    Timeout: 10
+
+Resources:
+  ScoreAPI:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: score-api
+      PackageType: Image
+      ImageUri: !Sub "${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/score-api:latest"
+      Events:
+        ScoreAPIProxy:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY

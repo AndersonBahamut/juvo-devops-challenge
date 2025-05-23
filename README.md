@@ -31,3 +31,5 @@ docker compose up --build
 
 Teste via http://localhost:8000/score/12345678909
 Teste via bash curl http://localhost:8000/score/12345678909
+
+# O arquivo Template.yaml da um exemplo de deploy para uma Lambda Function, onde devemos refazer a estruturação do code para AWS.
